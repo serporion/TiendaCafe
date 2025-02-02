@@ -1,0 +1,164 @@
+/* Importar de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+/* Importar otros archivos css */
+@import url(./header.css);
+@import url(./usuario.css);
+@import url(./producto.css);
+@import url(./categorias.css);
+@import url(./carrito.css);
+@import url(./order.css);
+@import url(./error.css);
+@import url(./footer.css);
+
+
+/* Variables globales */
+:root {
+    /* Colores */
+    --color-primario: rgb(77, 31, 10); 
+    --color-resaltar: #000000;
+    --color-fondo: rgba(224, 133, 15, 0.8); 
+    --color-texto: #3a3a3a; 
+    --color-fondo-principal: #ffffff;
+
+    /* Espaciado */
+    --espaciado: 2rem;
+    --espaciado-pequeno: 1rem;
+    --espaciado-grande: 3rem;
+    --borde-radio: 10px;
+
+    /* Sombras */
+    --sombra-pequena: 0 1px 3px rgba(0,0,0,0.12);
+    --sombra-mediana: 0 4px 6px rgba(0,0,0,0.1);
+    --sombra-grande: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.3);
+
+    /* Fuentes */
+    --fuente-texto: 'Lato', sans-serif;
+    --fuente-titulos: 'Arial', sans-serif;
+    --texto-base: 16px;
+    --texto-pequeno: 0.875rem;
+    --texto-grande: 1.5rem;
+    --texto-mediano: 1rem;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-texto), sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh; 
+    height: 100%;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuente-titulos), sans-serif;
+    margin-bottom: 1rem;
+}
+
+
+#tienda{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    /*background-image: url(../img/banner.jpg);*/
+    background-color: var(--color-fondo);
+}
+
+/* sobreescribiendo el color de fondo de la barra de navegacion de la clase .bg-light de bootstrap */
+.bg-light {
+    background-color: var(--color-fondo) !important;
+
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.container.mt-4.pedido {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42rem;
+    background-image: url("../img/banner.jpg");
+}
+
+
+.container.mt-4.anadir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    gap:5rem;
+    background-image: url("../img/banner.jpg");
+}
+
+.container.mt-4.anadir h2, label{
+    color: var(--color-fondo);
+    align-self: flex-start;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.container.mt-4.datos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container.mt-4.pedidoForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.container.mt-4.pedidoForm label{
+    color: var(--color-primario);
+}
+
+.container.mt-4.pedidoForm form{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.container.mt-4.pedidoForm form button{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.container.mt-4.pedido:hover {
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        height: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: auto;
+    }
+}

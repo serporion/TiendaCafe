@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+
+Options All -Indexes
+Options -Multiviews
+
+#Activar rewrite
+RewriteEngine on
+
+#Problema de redireccion. Lo manejo desde Router.php
+#ErrorDocument 404 http://localhost/ejercicios/DWES/Tienda/src/Controllers/Error/show_Error404
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^$ public/ [L]
+RewriteRule (.*) public/$1 [L]
+
+</IfModule>

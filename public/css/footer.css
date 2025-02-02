@@ -1,0 +1,111 @@
+/* Sección Footer */
+footer {
+    width: 100%;
+    color: var(--color-fondo);
+    height: 8rem;
+
+    /*
+    min-height: 15vh;
+    max-height: 15vh;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+    */
+     
+    padding: var(--espaciado-grande);
+}
+
+footer p{
+    font-size: var(--texto-base);
+    color: var(--color-primario);
+    font-weight: 600;
+
+}
+
+/* Estilos para la seccion derechso de reservados */
+#derechosReservados{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    gap: 0.5rem;
+}
+
+footer #derechosReservados span {
+    font-weight: 600;
+}
+
+
+
+/* Estilos para la seccion redes sociales */
+#redesSociales{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+}
+
+#iconoRedesSociales{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.iconos {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.iconos:hover {
+    transform: scale(1.1);
+    color: var(--color-fondo);
+}
+
+.iconos:visited {
+    color: var(--color-fondo);
+}
+
+
+/* Media querie para vistas móviles */
+@media (max-width: 768px) {
+    footer {
+        padding: var(--espaciado);
+        display: flex;
+        flex-direction: column; 
+        gap: var(--espaciado-grande);
+    }
+
+    footer p{
+        font-size: var(--texto-grande);
+    } 
+    
+
+    #redesSociales {
+        font-size: var(--texto-grande);
+        width: 100%;
+        text-align: center;
+    }
+
+
+    #iconoRedesSociales {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .iconos {
+        font-size: 1.5rem;
+    }
+
+    
+    #derechosReservados{
+        font-size: 0.7rem;
+    }
+    
+}

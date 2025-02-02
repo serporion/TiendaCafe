@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+
+#Desactivar Multiviews
+Options -Multiviews
+
+#Activar el motor de reescritura
+RewriteEngine on
+
+#ErrorDocument 404 http://localhost/ejercicios/DWES/AgendaMVCRepository/Error/show_Error404
+
+#RewriteBase /Tienda/public
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+#RewriteRule ^(.*)/(.*)/(.*)/ index.php?controller=$1&action=$2&id=$3 [QSA]
+#RewriteRule ^(.*)/(.*)/ index.php?controller=$1&action=$2 [QSA]
+RewriteRule ^ index.php [QSA,L]
+
+</IfModule>
+

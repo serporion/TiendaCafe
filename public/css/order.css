@@ -1,0 +1,70 @@
+/* Estilos para la lista de pedidos */
+.pedidos {
+    list-style: none;
+    padding: 0;
+    margin: var(--espaciado);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado);
+}
+
+.pedido {
+    background-color: var(--color-fondo-principal);
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra-mediana);
+    padding: var(--espaciado);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+
+}
+
+
+.numeroPedido {
+    font-size: var(--texto-grande);
+    border-collapse: collapse;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3rem;
+}
+
+.list-group-item {
+    border: 3px solid var(--color-primario);
+}
+
+.detallesPedidos,
+.lineasPedidos {
+    width: 100%;
+    margin: var(--espaciado-pequeno) 0;
+    font-size: var(--texto-pequeno);
+}
+
+.detallesPedidos th,
+.lineasPedidos th {
+    background-color: var(--color-fondo);
+    color: white;
+    text-align: left;
+    padding: var(--espaciado-pequeno);
+    font-family: var(--fuente-titulos), sans-serif;
+}
+
+.detallesPedidos td,
+.lineasPedidos td {
+    padding: var(--espaciado-pequeno);
+    color: var(--color-texto);
+}
+
+.detallesPedidos tr,
+.lineasPedidos tr {
+    background-color: var(--color-fondo);
+}
+
+.pedido h2 {
+    font-size: var(--texto-grande);
+    margin-top: var(--espaciado);
+    color: var(--color-fondo);
+    /*border-bottom: 2px solid var(--color-resaltar);*/
+    padding-bottom: var(--espaciado-pequeno);
+    font-family: var(--fuente-titulos), sans-serif;
+}

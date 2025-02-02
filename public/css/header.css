@@ -1,0 +1,106 @@
+header {
+    padding: var(--espaciado-pequeno);
+    font-family: var(--fuente-texto), sans-serif;
+    background-image: url(../img/banner.jpg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 6rem;
+}
+
+
+.container.header {
+    /*background-color: red;*/
+}
+
+
+#logo a {
+    text-decoration: none;
+    color: var(--color-fondo);
+    transition: color 0.3s;
+    font-size: 3rem;
+    font-family: var(--fuente-titulos), sans-serif;
+}
+
+#logo a:hover {
+    color: var(--color-resaltar);
+}
+
+.logo__bold{
+    font-weight: 700;
+    color: var(--color-fondo);
+    font-family: var(--fuente-titulos), sans-serif;
+    font-size: 3rem;
+}
+
+.menu {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1.5rem;
+    margin: 0;
+
+
+}
+
+.menu > ul {
+    list-style: none;
+    display: flex;
+    gap: var(--espaciado-pequeno);
+    padding: 0;
+    margin: 0;
+    align-items: baseline;
+}
+
+.menu > ul > li {
+    font-size: var(--texto-base);
+    color: var(--color-fondo-principal);
+}
+
+#nombreUsuario{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-size: 1.3rem;
+    color: var(--color-fondo);
+    height: 2rem;
+    padding: 1.2rem;
+    margin-top: -0.5rem;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: var(--color-fondo-principal);
+    padding: 0.5rem 1rem;
+    border-radius: var(--borde-radio);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu ul li a:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo-principal);
+}
+
+.dropdown-menu {
+    display: none; /* Oculta el menú desplegable por defecto */
+}
+
+.dropdown-menu.show {
+    display: block; /* Muestra el menú desplegable cuando está activo */
+}
+
+.nav .dropdown-menu {
+    background-color: var(--color-fondo-principal);
+    border: 1px solid var(--color-primario);
+}
+
+.nav .dropdown-item {
+    color: var(--color-texto);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav .dropdown-item:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo-principal);
+}

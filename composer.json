@@ -1,0 +1,31 @@
+{
+    "name": "serporion/tienda",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "\\ejercicios\\DWES\\Tienda\\": "src/",
+            "Controllers\\": "src/Controllers/",
+            "Models\\": "src/Models/",
+            "Lib\\": "src/Lib/",
+            "Repositories\\": "src/Repositories/",
+            "Services\\": "src/Services/",
+            "Views\\" : "src/Views",
+            "Routes\\" : "src/Routes",
+            "Config\\": "config/"
+        }
+    },
+    "authors": [
+        {
+            "name": "serporion",
+            "email": "serporionGit@hotmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "ext-pdo": "*",
+        "ext-fileinfo": "*",
+        "phpmailer/phpmailer": "6.9",
+        "firebase/php-jwt": "^6.11"
+    }
+}

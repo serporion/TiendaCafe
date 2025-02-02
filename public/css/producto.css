@@ -1,0 +1,298 @@
+span {
+    font-family: var(--fuente-titulos), sans-serif;
+    font-size: var(--texto-mediano);
+    color: var(--color-primario);
+}
+
+#producto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--espaciado);
+    background-image: url("../img/banner.jpg");
+    color: var(--color-texto);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#producto h2 {
+    font-family: var(--fuente-titulos), sans-serif;
+    color: var(--color-fondo);
+    margin-bottom: var(--espaciado);
+}
+
+#listaProductos {
+    height: auto;
+    width: 100%;
+    list-style: none;
+    display: flex; 
+    flex-wrap: wrap;
+    gap: var(--espaciado); 
+    padding: var(--espaciado-pequeno);
+    overflow-x: auto; 
+}
+
+#listaProductos li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container.mt-4.lista .row {
+    gap:5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-resaltar);
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra-pequena);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 20rem;
+    min-height: 30rem;
+    max-height: 40rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-grande);
+}
+
+.image {
+    width: 100%;
+    height: 15rem;
+    overflow: hidden;
+    background-color: var(--color-fondo-principal);
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cuerpo {
+    padding: var(--espaciado-pequeno);
+    text-align: left;
+}
+
+.cuerpo .titulo {
+    font-family: var(--fuente-titulos), sans-serif;
+    font-size: var(--texto-grande);
+    color: var(--color-primario);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+.cuerpo .descripcion {
+    font-size: var(--texto-base);
+    color: var(--color-texto);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+.cuerpo .precio {
+    font-size: var(--texto-grande);
+    font-weight: bold;
+    color: var(--color-resaltar);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+.cuerpo .stock {
+    font-size: var(--texto-pequeno);
+    color: var(--color-resaltar);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+.cuerpo .oferta {
+    font-size: var(--texto-pequeno);
+    color: var(--color-primario);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+
+#botones {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: var(--espaciado-pequeno);
+}
+
+.container.mt-4.detalle {
+    background-image: url("../img/banner.jpg");
+    height: 40rem;
+    width: 50rem;
+    margin-bottom: 2rem;
+}
+
+
+.container.mt-4.detalle #botones{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.container.mt-4.detalle h2 {
+    color:var(--color-fondo);
+    font-size: 4rem;
+}
+
+
+.botonesProductos {
+    width: 10rem;
+    height: 3rem;
+    background-color: var(--color-fondo-principal);
+    border: 2px solid var(--color-primario);
+    border-radius: var(--borde-radio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--texto-pequeno);
+    text-decoration: none;
+    color: var(--color-primario);
+    box-shadow: var(--sombra-mediana);
+    transition: all 0.5s;
+    margin-bottom: var(--espaciado-pequeno);
+    
+}
+
+.botonesProductos:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo-principal);
+}
+
+.btn-primary {
+    background-color: var(--color-primario);
+    border: none;
+    align-self: center;
+    border-radius: 2rem;
+}
+
+
+.itemProducto{
+    text-decoration: none;
+}
+
+
+#productDetail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaciado);
+    margin: var(--espaciado-grande) auto;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.cardDetail {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--color-fondo-principal);
+    border-radius: var(--borde-radio);
+    overflow: hidden;
+    box-shadow: var(--sombra-mediana);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardDetail:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-grande);
+}
+
+.imageDetail {
+    flex: 1 1 40%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageDetail img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-right: 3px solid var(--color-primario);
+}
+
+.card-img-top {
+    height: 15rem !important;
+}
+
+.bodyDetail {
+    flex: 1 1 60%; 
+    padding: var(--espaciado-pequeno);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titleDetail {
+    font-family: var(--fuente-titulos), sans-serif;
+    font-size: var(--texto-grande);
+    font-weight: 600;
+    color: var(--color-resaltar);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+.descriptionDetail {
+    font-size: var(--texto-base);
+    color: var(--color-texto);
+    margin-bottom: var(--espaciado-pequeno);
+    font-family: var(--fuente-texto), sans-serif;
+}
+
+.priceDetail {
+    font-size: var(--texto-grande);
+    font-weight: bold;
+    color: var(--color-primario);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+.stockDetail{
+    font-size: var(--texto-base);
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+.ofertDetail {
+    font-size: var(--texto-pequeno);
+    color: var(--color-resaltar);
+    font-weight: bold;
+    font-family: var(--fuente-texto), sans-serif;
+    margin-bottom: var(--espaciado-pequeno);
+}
+
+.buttonCart {
+    width: 100%;
+    margin-top: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonCart .botonesProductos{
+    align-self: center;
+    width: 90%;
+}
+
+
+.agotado {
+    position: relative;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.agotado::after {
+    opacity: 1;
+    font-size: 5rem;
+    content: 'AGOTADO';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    color: red;
+    font-weight: bold;
+}
