@@ -103,8 +103,8 @@ class AuthService {
      */
     public function actualizarUsuario(string $email, array $userData): bool {
         try {
-            $usuarioArray  = $this->authRepository->obtenerCorreo($email);
-            if ($usuarioArray ) {
+            $usuarioArray = $this->authRepository->obtenerCorreo($email);
+            if (!$usuarioArray) {
                 return false;
             }
 
@@ -120,5 +120,6 @@ class AuthService {
             return false;
         }
     }
+
 
 }

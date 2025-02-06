@@ -18,6 +18,7 @@ class Utilidades {
      */
     public static function confirmarCuenta($token) {
         $authService = new AuthService();
+
         if (Security::validaToken($token)) {
             $info = JWT::decode($token, new Key(Security::secretKey(), 'HS256'));
             $email = $info->data->email;

@@ -10,8 +10,7 @@
             "Repositories\\": "src/Repositories/",
             "Services\\": "src/Services/",
             "Views\\" : "src/Views",
-            "Routes\\" : "src/Routes",
-            "Config\\": "config/"
+            "Routes\\" : "src/Routes"
         }
     },
     "authors": [

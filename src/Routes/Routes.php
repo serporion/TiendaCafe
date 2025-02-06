@@ -150,6 +150,7 @@ class Routes
             (new CarritoController())->removeItem($id);
         });
 
+        /*
         Router::add('GET','/Carrito/disminuir/:id',function(int $id){
             (new CarritoController())->disminuir($id);
         });
@@ -157,6 +158,7 @@ class Routes
         Router::add('GET','/Carrito/aumentar/:id',function(int $id){
             (new CarritoController())->aumentar($id);
         });
+        */
 
         Router::add('POST','/Carrito/disminuir/:id',function(int $id){
             (new CarritoController())->disminuir($id);

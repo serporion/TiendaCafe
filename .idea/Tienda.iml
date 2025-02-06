@@ -10,8 +10,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Routes" isTestSource="false" packagePrefix="Routes\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Services" isTestSource="false" packagePrefix="Services\" />
       <sourceFolder url="file://$MODULE_DIR$/src/Views" isTestSource="false" packagePrefix="Views\" />
-      <sourceFolder url="file://$MODULE_DIR$/config" isTestSource="false" packagePrefix="Config\" />
-      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/graham-campbell/result-type" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpoption/phpoption" />
