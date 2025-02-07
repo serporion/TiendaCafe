@@ -74,7 +74,9 @@ class CarritoController {
         $productCart = $this->productoService->detalleProducto($id);
 
         if (isset($_SESSION['carrito'][$id])) {
-            $_SESSION['carrito'][$id]['cantidad'] += 1;  
+            if (isset($_SESSION['limite'][$id]) && !$_SESSION['limite'][$id]) {
+                $_SESSION['carrito'][$id]['cantidad'] += 1;
+            }
         } 
         else {
             $_SESSION['carrito'][$id] = array(
@@ -149,9 +151,15 @@ class CarritoController {
      * @return void
      */
     public function aumentar(int $id){
+
+        if (!isset($_SESSION['limite'][$id])) {
+            $_SESSION['limite'] = []; // Inicializa $_SESSION['limite'] como un array
+        }
+
+
         if(isset($_SESSION['carrito'][$id])){
             if($_SESSION['carrito'][$id]['cantidad'] === $_SESSION['carrito'][$id]['stock']){
-
+                $_SESSION['limite'][$id] = true;
                 header("Location: " . BASE_URL . "Carrito/cargarCarrito");
             }
             else{

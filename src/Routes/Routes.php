@@ -107,6 +107,12 @@ class Routes
             (new ProductoController())->inicio();
         });
 
+
+
+
+
+
+
         Router::add('GET','/Producto/guardarProductos',function(){
             (new ProductoController())->guardarProductos();
         });
@@ -189,64 +195,8 @@ class Routes
         });
 
 
-        Router::dispatch();
-
-
-
-        /*
-        Router::add('GET', '/public/', function () {
-            return "<?=BASE_URL?>/public/";
-            //return (new Router())->index();
-        });
-        */
-
-        /*
-        Router::add('GET', '/Contacto/mostrarToditos/', function () {
-            return (new ContactoController())->extraer_todos();
-        });
-        Router::add('GET', '/Contacto/listar', function () {
-            (new ContactoController())->listar();
-            return '';
-        });
-
-        Router::add('GET', '/Contacto/guardarElContacto', function () {
-            (new ContactoController())->guardarContacto();
-            return '';
-        });
-
-        Router::add('POST', '/Contacto/guardarElContacto', function () {
-            (new ContactoController())->guardarContacto();
-            return '';
-        });
-
-
-        Router::add('GET', '/Auth/mostrarLoginInicio', function () {
-            (new AuthController())->mostrarLoginInicio();
-            return '';
-        });
-
-        Router::add('GET', '/Auth/registroUsuarios', function () {
-            (new AuthController())->registroUsuarios();
-            return '';
-        });
-
-
-        Router::add('GET', '/Contacto/editContacto/:id', function (int $id) {
-            (new ContactoController())->editarContacto();
-            return '';
-        });
-
-        Router::add('GET', '/not-found', function () {
-            ErrorController()::show_Error404();
-            return '';
-        });
-
 
         Router::dispatch();
-
-        */
-
-
 
     }
 
