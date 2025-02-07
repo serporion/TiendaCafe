@@ -38,11 +38,17 @@ class Utilidades {
                         'confirmado' => true,
                         'token' => $newToken
                     ];
-                    $authService->actualizarUsuario($email, $userData);
 
-                    $_SESSION['correoConfirmado'] = "El usuario ha confirmado su correo correctamente";
-                    header("Location: " . BASE_URL);
-                    exit();
+                    if ($authService->actualizarUsuario($email, $userData)) {
+                        $_SESSION['correoConfirmado'] = "El usuario ha confirmado su correo correctamente";
+                        header("Location: " . BASE_URL);
+                        exit();
+                    }else {
+                        $_SESSION['correoConfirmado'] = "No se ha podido confirmar su correo correctamente. 
+                        El correo no existe en la base de datos";
+                        header("Location: " . BASE_URL);
+                        exit();
+                    }
                 }
             }
 
@@ -72,7 +78,5 @@ class Utilidades {
 
         return isset($_SESSION['usuario']) && $_SESSION["usuario"]["rol"] === 'admin';
     }
-
-
 
 }
