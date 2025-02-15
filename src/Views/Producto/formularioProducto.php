@@ -12,7 +12,8 @@
     <div class="alert alert-success" role="alert">Producto guardado con éxito</div>
 <?php else: ?>
 
-    <form action="<?= BASE_URL ?>Producto/guardarProductos" method="POST" enctype="multipart/form-data">
+    <form action="<?= htmlspecialchars(BASE_URL . 'Producto/guardarProductos', ENT_QUOTES, 'UTF-8') ?>" method="POST" enctype="multipart/form-data">
+
         <h2>Añadir producto</h2>
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoría:</label>

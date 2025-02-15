@@ -25,6 +25,9 @@
         "ext-pdo": "*",
         "ext-fileinfo": "*",
         "phpmailer/phpmailer": "6.9",
-        "firebase/php-jwt": "^6.11"
+        "firebase/php-jwt": "^6.11",
+        "paypal/paypal-checkout-sdk": "^1.0",
+        "setasign/fpdf": "^1.8",
+        "symfony/polyfill-iconv": "^1.31"
     }
 }

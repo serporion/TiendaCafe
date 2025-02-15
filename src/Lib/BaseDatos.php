@@ -119,6 +119,13 @@ class BaseDatos{
         $this->conexion = null;
     }
 
+    public function limpiarRecursos() {
+        if (isset($this->stmt)) {
+            $this->stmt->closeCursor();
+        }
+    }
+
+
     /**
      * Metodo para iniciar una transaccion
      * @return bool devuelve true si se inicia y false sino

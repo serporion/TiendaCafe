@@ -38,6 +38,7 @@ include_once dirname(__DIR__, 3)."/config/config.php";
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php if(isset($_SESSION['usuario']) && $_SESSION["usuario"]["rol"] === "admin"):?>
+                                <li><a class="dropdown-item" href="<?= BASE_URL?>Auth/extraer_todos">Listar Usuarios</a></li>
                                 <li><a class="dropdown-item" href="<?= BASE_URL?>Auth/registrarUsuario">Registrar Usuarios</a></li>
                                 <li><a class="dropdown-item" href="<?= BASE_URL?>Producto/guardarProductos">Añadir producto</a></li>
                             <?php endif;?>

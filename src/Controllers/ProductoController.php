@@ -46,14 +46,16 @@ class ProductoController {
             'hayProductos' => $hayProductos
         ]);    
     }
-    
+
+
 
     /**
      * Metodo que guardar los productos en caso de no haber errores y renderiza la vista
      * @return void
      */
 
-    public function guardarProductos() {
+    public function guardarProductos() : void{
+
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if (!$this->utiles->comprueboAdministrador()) {
                 header("Location: " . BASE_URL . "");
@@ -65,20 +67,21 @@ class ProductoController {
                     'categorias' => $categorias
                 ]);
             }
+
         } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errores = [];
             $imagenNombre = "";
             $rutaCarpeta = '../../public/img';
             $tiposPermitidos = ['image/jpeg', 'image/png', 'image/gif'];
 
-            // Crear carpeta si no existe
             if (!is_dir($rutaCarpeta)) {
                 mkdir($rutaCarpeta, 0777, true);
             }
 
-            // Manejo de la imagen
+            // Tratamiento de la imagen
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
                 $tipoArchivo = mime_content_type($_FILES['imagen']['tmp_name']);
+
                 if (!in_array($tipoArchivo, $tiposPermitidos)) {
                     $errores['imagen'] = "El archivo debe ser un formato válido (JPEG, PNG o GIF).";
                 } else {
@@ -106,15 +109,12 @@ class ProductoController {
                 $imagenNombre
             );
 
-            // Sanitizar datos
             $producto->sanitizarDatos();
-
-            // Validar datos
 
             $errores = array_merge($errores, $producto->validarDatosProductos());
 
             if (empty($errores)) {
-                // Preparar datos para guardar
+
                 $productData = [
                     'categoria_id' => $producto->getCategoriaId(),
                     'nombre' => $producto->getNombre(),
@@ -126,13 +126,13 @@ class ProductoController {
                     'imagen' => $producto->getImagen(),
                 ];
 
-                // Guardar producto
                 $resultado = $this->productoService->guardarProductos($productData);
 
                 if ($resultado === true) {
                     $_SESSION['guardado'] = true;
                     header("Location: " . BASE_URL . "Producto/inicio");
                     exit;
+
                 } else {
                     $errores['db'] = "Error al guardar el producto: " . $resultado;
                     $this->pages->render('Producto/formularioProducto', [
@@ -141,7 +141,7 @@ class ProductoController {
                     ]);
                 }
             } else {
-                // Renderizar formulario con errores
+
                 $this->pages->render('Producto/formularioProducto', [
                     "errores" => $errores,
                     "categorias" => $this->categoriaService->listarCategorias()
@@ -157,9 +157,8 @@ class ProductoController {
      * @return void
      */
     public function detalleProducto(int $id){
-        $details = $this->productoService->detalleProducto($id);
 
-        //die(var_dump(($details)));
+        $details = $this->productoService->detalleProducto($id);
 
         $this->pages->render('Producto/detalleProducto',
         [
@@ -170,10 +169,13 @@ class ProductoController {
 
     /**
      * Metodo que borrar  un producto
-     * @var id id del producto a borrar
+     *
+     * @var int $id del producto a borrar
      * @return void
      */
-    public function borrarProducto (int $id){
+    public function borrarProducto (int $id): void
+    {
+
         if(!$this->utiles->comprueboAdministrador()){
             header("Location: " . BASE_URL ."");
         }
@@ -203,18 +205,17 @@ class ProductoController {
                     $this->pages->render('Producto/detalleProducto/$id');
                 }
             }
-
-            
         }
                     
     }
 
     /**
      * Metodo que actualiza los datos de un producto
-     * @var id id del producto aactualizar
+     * @var int $id del producto aactualizar
      * @return void
      */
     public function actualizarProducto(int $id){
+
         if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 
             if(!$this->utiles->comprueboAdministrador()){
@@ -227,7 +228,6 @@ class ProductoController {
                 $categorias = $this->categoriaService->listarCategorias();
                 $producto = $this->productoService->detalleProducto($id);
 
-
                 $this->pages->render('Producto/formularioActualizacion',
                 [
                     'categorias' => $categorias,
@@ -237,8 +237,6 @@ class ProductoController {
         }
 
         else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            
 
             $imagenNombre = '';
             $rutaCarpeta = '../../public/img';
@@ -271,7 +269,6 @@ class ProductoController {
                 $imagenNombre = $product[0]['imagen'];
             }
 
-
                 $producto = new Producto(
                     null,
                     $_POST['categoria'],
@@ -284,10 +281,8 @@ class ProductoController {
                     $imagenNombre
                 );
 
-                // Sanitizar datos
                 $producto->sanitizarDatos();
-                
-                // Validar datos
+
                 $errores = $producto->validateUpdate();
 
                 if (empty($errores)) {

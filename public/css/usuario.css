@@ -223,3 +223,63 @@
     font-size: var(--texto-pequeno);
     margin-bottom: var(--espaciado-pequeno);
 }
+
+#listarUsuarios {
+    min-width: 1150px;
+    border-collapse: collapse;
+}
+
+#listarUsuarios th,
+#listarUsuarios td {
+    border: 1px solid var(--color-resaltar);
+    padding: 8px;
+    text-align: left;
+}
+
+#listarUsuarios th:nth-child(1),
+#listarUsuarios td:nth-child(1) {
+    width: 5%; /* ID */
+}
+
+#listarUsuarios th:nth-child(2),
+#listarUsuarios td:nth-child(2) {
+    width: 15%; /* Nombre */
+}
+
+#listarUsuarios th:nth-child(3),
+#listarUsuarios td:nth-child(3) {
+    width: 15%; /* Apellidos */
+}
+
+#listarUsuarios th:nth-child(4),
+#listarUsuarios td:nth-child(4) {
+    width: 20%; /* Correo */
+}
+
+#listarUsuarios th:nth-child(5),
+#listarUsuarios td:nth-child(5) {
+    width: 15%; /* Fecha Expira */
+}
+
+#listarUsuarios th:nth-child(6),
+#listarUsuarios td:nth-child(6) {
+    width: 5%; /* Confirmado */
+    text-align: center;
+}
+
+#listarUsuarios th:nth-child(7),
+#listarUsuarios td:nth-child(7) {
+    width: 5%; /* Rol */
+}
+
+#listarUsuarios th:nth-child(8),
+#listarUsuarios td:nth-child(8) {
+    width: 7%; /* Editar */
+    text-align: center;
+}
+
+#listarUsuarios th:nth-child(9),
+#listarUsuarios td:nth-child(9) {
+    width: 7%; /* Borrar */
+    text-align: center;
+}

@@ -61,7 +61,7 @@
 
                 <h2 id="totalPrice">Precio total: <?= $_SESSION['totalCost'] ?> €</h2>
 
-                <a href="<?= BASE_URL?>Carrito/clearCart" class="botonesProductos">Vaciar carrito</a>
+                <a href="<?= BASE_URL?>Carrito/borrarCarrito" class="botonesProductos">Vaciar carrito</a>
 
                 <a href="<?= BASE_URL?>Pedido/guardarPedido" class="botonesProductos">Confirmar pedido</a>
 

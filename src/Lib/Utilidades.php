@@ -2,6 +2,7 @@
 
 namespace Lib;
 
+use ErrorException;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Services\AuthService;
@@ -31,9 +32,9 @@ class Utilidades {
                         'email' => $email,
                         'nombre' => $info->data->nombre
                     ];
-                    $newToken = Security::createToken(Security::secretKey(), $tokenData);
+                    //$newToken = Security::createToken(Security::secretKey(), $tokenData);
+                    $newToken = Security::createToken(Security::secretKey(), $tokenData, false); //Agrego parámetro para manejar la fecha expiracion.
 
-                    // Actualizar usuario con nuevo token
                     $userData = [
                         'confirmado' => true,
                         'token' => $newToken
@@ -43,19 +44,30 @@ class Utilidades {
                         $_SESSION['correoConfirmado'] = "El usuario ha confirmado su correo correctamente";
                         header("Location: " . BASE_URL);
                         exit();
-                    }else {
+                    } else {
                         $_SESSION['correoConfirmado'] = "No se ha podido confirmar su correo correctamente. 
-                        El correo no existe en la base de datos";
+                    El correo no existe en la base de datos";
                         header("Location: " . BASE_URL);
                         exit();
                     }
+                } else {
+                    $_SESSION['correoConfirmado'] = "No se ha podido confirmar su correo. El usuario no pudo ser confirmado";
+                    header("Location: " . BASE_URL);
+                    exit();
                 }
+            } else {
+                $_SESSION['correoConfirmado'] = "No se ha podido confirmar su correo correctamente. 
+            El correo no existe en la base de datos";
+                header("Location: " . BASE_URL);
+                exit();
             }
 
+        } else {
+            $_SESSION['correoConfirmado'] = "Error al confirmar el correo. El token es inválido";
+            header("Location: " . BASE_URL);
+            exit();
         }
-        $_SESSION['correoConfirmado'] = "Error al confirmar el correo";
-        header("Location: " . BASE_URL);
-        exit();
+
     }
 
 
@@ -67,6 +79,7 @@ class Utilidades {
         return isset($_SESSION['usuario']) && !empty($_SESSION['usuario']);
     }
 
+
     /**
      * Metodo que comprueba si el usuario logueado es administrador o no.
      * @return bool
@@ -77,6 +90,20 @@ class Utilidades {
         }
 
         return isset($_SESSION['usuario']) && $_SESSION["usuario"]["rol"] === 'admin';
+    }
+
+    /**
+     * Manejador de errores para convertir warnings en excepciones.
+     *
+     * @param int $errno Número del error.
+     * @param string $errstr Mensaje del error.
+     * @param string $errfile Nombre del archivo donde ocurrió el error.
+     * @param int $errline Número de línea donde ocurrió el error.
+     * @throws ErrorException Lanza una excepción con la información del error.
+     * @return void Esta función no devuelve nada, siempre lanza una excepción.
+     */
+    function manejadorWarning($errno, $errstr, $errfile, $errline) :void {
+        throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
     }
 
 }

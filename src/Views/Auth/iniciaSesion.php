@@ -1,7 +1,7 @@
 <div id="inicioSesion" class="container mt-4">
     <h2>Formulario de Inicio de Sesión</h2>
-    <form action="<?= BASE_URL ?>Auth/iniciarSesion" method="POST">
-        <div class="mb-3">
+    <form action="<?= htmlspecialchars(BASE_URL . 'Auth/iniciarSesion', ENT_QUOTES, 'UTF-8') ?>" method="POST">
+    <div class="mb-3">
             <label for="correo" class="form-label">Correo Electrónico:</label>
             <input type="email" name="correo" id="correo" class="form-control" value="<?php echo $_POST['correo'] ?? ''; ?>">
             <?php if (isset($errores['correo'])): ?>

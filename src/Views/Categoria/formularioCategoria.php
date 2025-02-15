@@ -7,8 +7,9 @@
 <div class="container mt-4 pedidoForm">
     <div class="guardarCategoria">
         <h2>Añadir Categoría</h2>
-        <form action="<?= BASE_URL ?>Categoria/almacenarCategoria" method="POST">
-            <div class="mb-3">
+        <form action="<?= htmlspecialchars(BASE_URL . 'Categoria/almacenarCategoria', ENT_QUOTES, 'UTF-8') ?>" method="POST">
+
+        <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre:</label>
                 <input type="text" name="categoria[nombre]" id="nombre" class="form-control" value="<?=(isset($category))?$category->getNombre():""?>">
                 <?php if (isset($errores['nombre'])): ?>

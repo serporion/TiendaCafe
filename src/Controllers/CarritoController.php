@@ -3,8 +3,10 @@
 namespace Controllers;
 
 use Lib\Pages;
+use Models\Carrito;
 use Models\Producto;
 use Lib\Utilidades;
+use Services\CarritoService;
 use Services\ProductoService;
 use Services\CategoriaService;
 
@@ -18,6 +20,7 @@ class CarritoController {
     private Utilidades $utiles;
     private ProductoService $productoService;
     private CategoriaService $categoriaService;
+    private CarritoService $carritoService;
     
     
     public function __construct() {
@@ -25,6 +28,7 @@ class CarritoController {
         $this->utiles = new Utilidades();
         $this->productoService = new ProductoService();
         $this->categoriaService = new CategoriaService();
+        $this->carritoService = new CarritoService();
     }
 
     /**
@@ -94,10 +98,15 @@ class CarritoController {
     }
 
     /**
-     * Metodo que vacia el carrito y redirije a la vista.
+     * Metodo que vacia el carrito tanto de la base de datos como de la variable de sesion
+     * establecida anteriormente y redirije a la vista.
+     *
      * @return void
      */
-    public function clearCart(){
+    public function borrarCarrito(){
+
+        $this->carritoService->borrarCarrito($_SESSION['usuario']['id']);
+
         unset($_SESSION['carrito']);
 
         header("Location: " . BASE_URL . "Carrito/cargarCarrito");
@@ -176,5 +185,32 @@ class CarritoController {
         }
     }
 
+    /**
+     * Método que guarda el carrito de un usuario en el sistema, en la base de datos.
+     *
+     * @param int $usuario Identificador del usuario al que pertenece el carrito.
+     * @param array $carrito Contenido del carrito a guardar.
+     * @return bool Devuelve true si el carrito se guardó correctamente, false en caso contrario.
+     */
+    public function guardarCarrito(int $usuario, array $carrito): bool
+    {
+        return $this->carritoService->guardarCarrito($usuario, $carrito );
+    }
+
+
+    /**
+     * Método que recupera el carrito dependiendo del usuario.
+     *
+     * @param int $usuarioId del id del usuario.
+     * @return void
+     */
+    public function recuperarCarrito(int $usuarioId): void
+    {
+        $carrito = $this->carritoService->obtenerCarritoPorUsuarioId($usuarioId);
+
+        if ($carrito) {
+            $_SESSION['carrito'] = $carrito; //->getCarrito();
+        }
+    }
 
 }

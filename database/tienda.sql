@@ -5,68 +5,75 @@ USE tienda;
 
 DROP TABLE IF EXISTS usuarios;
 CREATE TABLE IF NOT EXISTS usuarios(
-                                       id              int(255) auto_increment not null,
-    nombre          varchar(100) not null,
-    apellidos       varchar(255),
-    email           varchar(255) not null,
-    password        varchar(255) not null,
-    rol             varchar(20),
-    CONSTRAINT pk_usuarios PRIMARY KEY(id),
-    CONSTRAINT uq_email UNIQUE(email)
-    )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
+                                       id                INT(255) AUTO_INCREMENT NOT NULL,
+    nombre            VARCHAR(100) NOT NULL,
+    apellidos         VARCHAR(255),
+    email             VARCHAR(255) NOT NULL,
+    password          VARCHAR(255) NOT NULL,
+    rol               VARCHAR(20),
+    fecha_expiracion  DATETIME,
+    confirmado        BOOLEAN DEFAULT FALSE,
+    token             VARCHAR(255),
+    PRIMARY KEY(id),
+    UNIQUE(email)
+    ) ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 DROP TABLE IF EXISTS categorias;
 CREATE TABLE IF NOT EXISTS categorias(
-                                         id              int(255) auto_increment not null,
-    nombre          varchar(100) not null,
-    CONSTRAINT pk_categorias PRIMARY KEY(id)
-    )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
+                                         id      INT(255) AUTO_INCREMENT NOT NULL,
+    nombre  VARCHAR(100) NOT NULL,
+    PRIMARY KEY(id)
+    ) ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 DROP TABLE IF EXISTS productos;
 CREATE TABLE IF NOT EXISTS productos(
-                                        id              int(255) auto_increment not null,
-    categoria_id    int(255) not null,
-    nombre          varchar(100) not null,
-    descripcion     text,
-    precio          float(100,2) not null,
-    stock           int(255) not null,
-    oferta          varchar(2),
-    fecha           date not null,
-    imagen          varchar(255),
-    CONSTRAINT pk_categorias PRIMARY KEY(id),
-    CONSTRAINT fk_producto_categoria FOREIGN KEY(categoria_id) REFERENCES categorias(id)
-    )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+                                        id            INT(255) AUTO_INCREMENT NOT NULL,
+    categoria_id  INT(255) NOT NULL,
+    nombre        VARCHAR(100) NOT NULL,
+    descripcion   TEXT,
+    precio        FLOAT(100,2) NOT NULL,
+    stock         INT(255) NOT NULL,
+    oferta        VARCHAR(2),
+    fecha         DATE NOT NULL,
+    imagen        VARCHAR(255),
+    PRIMARY KEY(id),
+    FOREIGN KEY(categoria_id) REFERENCES categorias(id)
+    ) ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 DROP TABLE IF EXISTS pedidos;
 CREATE TABLE IF NOT EXISTS pedidos(
-                                      id              int(255) auto_increment not null,
-    usuario_id      int(255) not null,
-    provincia       varchar(100) not null,
-    localidad       varchar(100) not null,
-    direccion       varchar(255) not null,
-    coste           float(200,2) not null,
-    estado          varchar(20) not null,
-    fecha           date,
-    hora            time,
-    CONSTRAINT pk_pedidos PRIMARY KEY(id),
-    CONSTRAINT fk_pedido_usuario FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
-    )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+                                      id              INT(255) AUTO_INCREMENT NOT NULL,
+    usuario_id      INT(255) NOT NULL,
+    provincia       VARCHAR(100) NOT NULL,
+    localidad       VARCHAR(100) NOT NULL,
+    direccion       VARCHAR(255) NOT NULL,
+    coste           FLOAT(200,2) NOT NULL,
+    estado          VARCHAR(20) NOT NULL,
+    fecha           DATE,
+    hora            TIME,
+    pagado          BOOLEAN DEFAULT FALSE,
+    transaction_id  VARCHAR(50),
+    PRIMARY KEY(id),
+    FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+    ) ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 DROP TABLE IF EXISTS lineas_pedidos;
 CREATE TABLE IF NOT EXISTS lineas_pedidos(
-                                             id              int(255) auto_increment not null,
-    pedido_id       int(255) not null,
-    producto_id     int(255) not null,
-    unidades        int(255) not null,
-    CONSTRAINT pk_lineas_pedidos PRIMARY KEY(id),
-    CONSTRAINT fk_linea_pedido FOREIGN KEY(pedido_id) REFERENCES pedidos(id),
-    CONSTRAINT fk_linea_producto FOREIGN KEY(producto_id) REFERENCES productos(id)
-    )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+                                             id              INT(255) AUTO_INCREMENT NOT NULL,
+    pedido_id       INT(255) NOT NULL,
+    producto_id     INT(255) NOT NULL,
+    unidades        INT(255) NOT NULL,
+    precio_unitario FLOAT(100,2) NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(pedido_id) REFERENCES pedidos(id),
+    FOREIGN KEY(producto_id) REFERENCES productos(id)
+    ) ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-
-ALTER TABLE usuarios
-ADD COLUMN fecha_expiracion DATETIME,
-ADD COLUMN confirmado BOOLEAN DEFAULT FALSE,
-ADD COLUMN token VARCHAR(255);
+DROP TABLE IF EXISTS carritos_guardados;
+CREATE TABLE carritos_guardados (
+                                    id INT AUTO_INCREMENT PRIMARY KEY,
+                                    usuario_id INT NOT NULL,
+                                    carrito JSON NOT NULL,
+                                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                                    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);

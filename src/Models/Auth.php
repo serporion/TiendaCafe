@@ -4,8 +4,6 @@ namespace Models;
 
 use Lib\BaseDatos;
 use Lib\Validar;
-use PDO;
-use PDOException;
 use DateTime;
 
 
@@ -147,6 +145,30 @@ class Auth
             $errores['contrasena'] = "La contraseña es obligatoria";
         } elseif (!Validar::validatePassword($this->contrasena) || strlen($this->contrasena) < 6) {
             $errores['contrasena'] = "La contraseña debe de ser de al menos 8 caracteres una letra mayúscula, una letra minúscula y un caracteres especiales.";
+        }
+
+        return $errores;
+    }
+
+    /**
+     * Metodo que valida y devuelve un array con los errores surgidos.
+     * @return array con los errores encontrados tras la validación.
+     */
+
+    public function validarDatosReenvioContrasena(): array {
+        $errores = [];
+
+        if (empty($this->nombre)) {
+            $errores['nombre'] = "El nombre es obligatorio";
+        } elseif (!Validar::validateNombre($this->nombre)) {
+            $errores['nombre'] = "El nombre no puede contener caracteres especiales";
+        }
+
+
+        if (empty($this->correo)) {
+            $errores['email'] = "El correo electrónico es obligatorio";
+        } elseif (!Validar::validateEmail($this->correo)) {
+            $errores['email'] = "El correo electrónico no es válido";
         }
 
         return $errores;

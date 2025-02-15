@@ -6,22 +6,26 @@ if(session_status() === PHP_SESSION_NONE){
 
 <div id="registrar" class="container mt-4">
     <?php if(isset($_SESSION['registrado'])): ?>
-
         <div class="alert alert-success" role="alert">Usuario registrado con éxito. Revise su correo.</div>
-
+        <?php unset($_SESSION['registrado']); ?>
+        <p><a href="<?= BASE_URL ?>Auth/registrarUsuario" class="btn btn-primary">Volver</a></p>
     <?php elseif(isset($_SESSION['falloDatos'])): ?>
-        <div class="alert alert-danger" role="alert">Los datos no se han enviado correctamente</div>
+        <div class="alert alert-danger" role="alert">Los datos no se han enviado correctamente.</div>
         <p><a href="<?= BASE_URL ?>Auth/registrarUsuario" class="btn btn-primary">Volver</a></p>
-
-    <?php elseif(isset($errores['login'])): ?>
-        <div class="alert alert-danger" role="alert">Los datos no se han enviado correctamente</div>
-        <div class="text-danger"><?= $errores['login']; ?></div>
-        <p><a href="<?= BASE_URL ?>Auth/registrarUsuario" class="btn btn-primary">Volver</a></p>
-
     <?php else: ?>
-        <h2>Formulario de Registro</h2>
-        <form action="<?= BASE_URL ?>Auth/insertarUsuario" method="POST">
-            <div class="mb-3">
+        <h2>Registrar Usuario</h2>
+        <?php if (isset($errores) && !empty($errores)): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php foreach ($errores as $error): ?>
+                        <li><?php echo htmlspecialchars($error); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+        <form action="<?= htmlspecialchars(BASE_URL . 'Auth/insertarUsuario', ENT_QUOTES, 'UTF-8') ?>" method="POST">
+
+        <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre:</label>
                 <input type="text" name="data[nombre]" id="nombre" class="form-control" value="<?=(isset($user))?$user->getNombre():""?>">
                 <?php if (isset($errores['nombre'])): ?>

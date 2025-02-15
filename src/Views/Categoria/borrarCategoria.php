@@ -16,7 +16,8 @@
             <p><a href="<?= BASE_URL ?>Categoria/categorias" class="btn btn-primary">Volver</a></p>
         <?php else: ?>
             <h2>Borrar Categoría</h2>
-            <form action="<?= BASE_URL ?>Categoria/borrarCategoria" method="POST">
+                <form action="<?= htmlspecialchars(BASE_URL . 'Categoria/borrarCategoria', ENT_QUOTES, 'UTF-8') ?>" method="POST">
+
                 <div class="mb-3">
                     <label for="categoriaSelect" class="form-label">Categoría:</label>
                     <select name="categoriaSelect" id="categoriaSelect" class="form-select">

@@ -53,8 +53,6 @@ class CategoriaController {
      * @return void
      */
     public function almacenarCategoria() {
-        //Obtener datos formularios, sanetizarlos y validarlos
-        
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 
@@ -103,14 +101,15 @@ class CategoriaController {
     }
 
     /**
-     * Metodo para mostrar los productos de una determinada categoria
+     * Metodo para mostrar los productos de una determinada categoria.
+     * Envía los datos a la vista.
+     *
      * @var id $id de la categoria a mostrar los productos
      * @return void
      */
     public function ProductXCategory(int $id){
         $productos = $this->productoService->mostrarProductosXCategoria($id);
         $hayProductos = !empty($productos);
-
 
         $this->pages->render('Producto/gestionProductos',
         [
@@ -125,9 +124,9 @@ class CategoriaController {
      * a la vista si no hay errores.
      * @return void
      */
-    public function actualizarCategoria(){
-        if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+    public function actualizarCategoria(): void {
 
+        if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 
             if(!$this->utiles->comprueboAdministrador()){
                 header("Location: " . BASE_URL ."");

@@ -11,18 +11,14 @@
     </div>
 <?php else: ?>
 
-
-
 <div id="product" class="container mt-4 pedidoForm">
 
 <?php 
     if(isset($_SESSION['order'])): 
 ?>
-    <div class="alert alert-success" role="alert">Pedido realizado con éxito</div>
+    <div class="alert alert-success" role="alert">Pedido grabado. Proceda a su pago.</div>
         <?php if(isset($_SESSION['mailOk']) && $_SESSION['mailOk']): ?>
-        <div class="alert alert-info" role="alert">
-            Revise su correo, le hemos enviado el pedido a su buzón.
-        </div>
+
     <?php elseif(isset($_SESSION['mailOk']) && !$_SESSION['mailOk']): ?>
         <div class="alert alert-warning" role="alert">
             El pedido se ha realizado, pero hubo un problema al enviar el correo.
@@ -37,7 +33,7 @@
 
 
     <h2>Realizar pedido</h2>
-    <form action="<?= BASE_URL ?>Pedido/guardarPedido" method="POST">
+        <form action="<?= htmlspecialchars(BASE_URL . 'Pedido/guardarPedido') ?>" method="POST">
 
         <div class="mb-3">
             <label for="provincia" class="form-label">Provincia:</label>

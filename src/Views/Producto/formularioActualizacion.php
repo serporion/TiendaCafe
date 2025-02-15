@@ -14,9 +14,9 @@
     <?php unset($_SESSION['actualizado']) ?>
 <?php else: ?>
 
+    <form action="<?= htmlspecialchars(BASE_URL . 'Producto/actualizarProducto/' . $product[0]['id'], ENT_QUOTES, 'UTF-8') ?>" method="POST" enctype="multipart/form-data">
 
-    <form action="<?= BASE_URL ?>Producto/actualizarProducto/<?= $product[0]['id'] ?>" method="POST" enctype="multipart/form-data">
-        <h2>Actualizar producto</h2>
+            <h2>Actualizar producto</h2>
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoría:</label>
             <select name="categoria" id="categoria" class="form-select">
@@ -68,5 +68,6 @@
 
         <button type="submit" class="btn btn-primary">Actualizar Producto</button>
     </form>
+
 <?php endif; ?>
 </div>

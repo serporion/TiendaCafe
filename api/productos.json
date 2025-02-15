@@ -1,0 +1,24 @@
+[
+  {
+    "id": 100,
+    "categoria_id": 1,
+    "nombre": "Producto 1",
+    "descripcion": "Descripción del producto 1",
+    "precio": "19.99",
+    "stock": 100,
+    "oferta": "false",
+    "fecha": "2024-01-01",
+    "imagen": "producto1.jpg"
+  },
+  {
+    "id": 200,
+    "categoria_id": 2,
+    "nombre": "Producto 2",
+    "descripcion": "Descripción del producto 2",
+    "precio": "29.99",
+    "stock": 50,
+    "oferta": "true",
+    "fecha": "2024-01-01",
+    "imagen": "producto2.jpg"
+  }
+]

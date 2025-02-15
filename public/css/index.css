@@ -63,6 +63,16 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
 }
 
+.enlace {
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.enlace:hover {
+    color: var(--color-resaltar);
+}
 
 #tienda{
     flex: 1;
@@ -115,6 +125,15 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+.container.mt-4.listar{
+    display: flex;
+    color: var(--color-primario);
+    justify-content: center;
+    margin-bottom: 2rem;
+
+}
+
+
 .container.mt-4.datos {
     display: flex;
     flex-direction: column;
@@ -147,6 +166,55 @@ h1, h2, h3, h4, h5, h6 {
 
 .container.mt-4.pedido:hover {
     transform: none;
+}
+
+
+
+.container.mt-4.modificarUsuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 30rem;
+    gap: 2rem;
+}
+
+
+.container.mt-4.contrasena{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 30rem;
+
+}
+
+
+.container.mt-4.contrasena h2, label{
+    color: var(--color-primario);
+    align-self: inherit;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.container.mt-4.contrasena button {
+    background-color: var(--color-primario);
+    color: var(--color-fondo-principal);
+    font-size: var(--texto-base);
+    font-weight: bold;
+    margin-top: 1rem;
+    padding: 0.65rem;
+    border: none;
+    border-radius: var(--borde-radio);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container.mt-4.contrasena input {
+    min-width: 20rem;
+    border-radius: 0.7rem;
 }
 
 @media (max-width: 768px) {
